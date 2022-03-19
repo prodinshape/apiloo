@@ -1,6 +1,66 @@
 {
   "version": 2,
   "projects": {
-    "apilooback": "apps/apilooback"
+    "apilooback": "apps/apilooback",
+    "apiloodesktop": {
+      "root": "apps/apiloodesktop",
+      "sourceRoot": "apps/apiloodesktop/src",
+      "projectType": "application",
+      "schematics": {},
+      "architect": {
+        "start": {
+          "builder": "@nrwl/react-native:start",
+          "options": {
+            "port": 8081
+          }
+        },
+        "run-ios": {
+          "builder": "@nrwl/react-native:run-ios",
+          "options": {}
+        },
+        "bundle-ios": {
+          "builder": "@nrwl/react-native:bundle",
+          "outputs": ["apps/apiloodesktop/build"],
+          "options": {
+            "entryFile": "apps/apiloodesktop/index.js",
+            "platform": "ios",
+            "bundleOutput": "dist/apps/apiloodesktop/ios/index.bundle"
+          }
+        },
+        "run-android": {
+          "builder": "@nrwl/react-native:run-android",
+          "options": {}
+        },
+        "build-android": {
+          "builder": "@nrwl/react-native:build-android",
+          "outputs": [
+            "apps/apiloodesktop/android/app/build/outputs/bundle",
+            "apps/apiloodesktop/android/app/build/outputs/apk"
+          ],
+          "options": {}
+        },
+        "bundle-android": {
+          "builder": "@nrwl/react-native:bundle",
+          "options": {
+            "entryFile": "apps/apiloodesktop/index.js",
+            "platform": "android",
+            "bundleOutput": "dist/apps/apiloodesktop/android/index.bundle"
+          }
+        },
+        "lint": {
+          "builder": "@nrwl/linter:eslint",
+          "options": {
+            "lintFilePatterns": ["apps/apiloodesktop/**/*.{js,ts,tsx}"]
+          }
+        },
+        "test": {
+          "builder": "@nrwl/jest:jest",
+          "options": {
+            "jestConfig": "apps/apiloodesktop/jest.config.js",
+            "passWithNoTests": true
+          }
+        }
+      }
+    }
   }
 }
