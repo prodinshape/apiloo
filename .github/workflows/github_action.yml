@@ -16,4 +16,4 @@ jobs:
           email: prodinshape@gmail.com # your heroku email
           api_key: 227b528f-a925-4ad3-b3eb-592b5761ff91 # your  heroku api key
           docker_compose_file: './docker-compose.yml' # set the path to the folder where the docker-compose file is located
-          heroku_apps: '[{"imagename":"monsieursam/apiloo","appname":"apilooback","apptype":"web"}]' # List of Docker Image name, Heroku app and Heroku app type
+          heroku_apps: '[{"imagename":"monsieursam/apiloo:version1","appname":"apilooback","apptype":"web"}]' # List of Docker Image name, Heroku app and Heroku app type
