@@ -66,18 +66,33 @@ jobs:
       #     app_name: apilooback
       #     # docker-compose File Path
       #     docker_compose_file: apps/apilooback/Dockerfile
-      - name: Heroku Docker Container Deploy
+      # - name: Heroku Docker Container Deploy
         # You may pin to the exact commit or the version.
         # uses: lucassarcanjo/heroku-deploy@1db4c62f6032efe526c12734f18d36669218e5af
-        uses: lucassarcanjo/heroku-deploy@2.1.17
-        with:
-          # Email Linked to your Heroku Account
-          email: prodinshape@gmail.com
-          # Heroku Dyno Formation
-          formation: web
-          # Your Heroku API Key
-          api_key: 227b528f-a925-4ad3-b3eb-592b5761ff91
-          # Your Heroku App Name
-          app_name: apilooback
-          # Dokerfile path
-          dockerfile_path: apps/apilooback
+        # uses: lucassarcanjo/heroku-deploy@2.1.17
+        # with:
+        #   # Email Linked to your Heroku Account
+        #   email: prodinshape@gmail.com
+        #   # Heroku Dyno Formation
+        #   formation: web
+        #   # Your Heroku API Key
+        #   api_key: 227b528f-a925-4ad3-b3eb-592b5761ff91
+        #   # Your Heroku App Name
+        #   app_name: apilooback
+        #   # Dokerfile path
+        #   dockerfile_path: apps/apilooback
+        - name: Deploy to Heroku Using Docker Container
+          # You may pin to the exact commit or the version.
+          # uses: cloutojp/heroku-deploy@bc1a3d9259ed8138863809a6ed11b3bae18ff6ba
+          uses: cloutojp/heroku-deploy@v2.0.7
+          with:
+            # Email Linked to your Heroku Account
+            email: prodinshape@gmail.com
+            # Your Heroku API Key
+            api_key: 227b528f-a925-4ad3-b3eb-592b5761ff91
+            # Your Heroku App Name
+            app_name: apilooback
+            # Dokerfile path
+            dockerfile_path: ./apps/apilooback/Dockerfile
+            # Optional build parameters
+            options: # optional
