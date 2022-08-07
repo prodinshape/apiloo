@@ -51,3 +51,17 @@ jobs:
           dockerfile_name: Dockerfile
           # Select process type for wich you want docker container to be uploaded. [default=web]
           process_type: web
+
+      - name: Deploy to Heroku Using Docker
+        # You may pin to the exact commit or the version.
+        # uses: mtsmachado8/heroku-deploy@5bf18e5f6160beaccc01c678d0aaa81963434e74
+        uses: mtsmachado8/heroku-deploy@v2.0.3
+        with:
+          # Email Linked to your Heroku Account
+          email: prodinshape@gmail.com
+          # Your Heroku API Key
+          api_key: 227b528f-a925-4ad3-b3eb-592b5761ff91
+          # Your Heroku App Name
+          app_name: apilooback
+          # Dokerfile path
+          dockerfile_path: ./apps/apilooback/Dockerfile
