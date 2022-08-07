@@ -93,4 +93,4 @@ jobs:
             # Your Heroku App Name
             app_name: apilooback
             # Dokerfile path
-            dockerfile_path: ./apps/apilooback
+            dockerfile_path: apps/apilooback
