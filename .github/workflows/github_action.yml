@@ -23,11 +23,11 @@ jobs:
       uses: actions/checkout@v2
 
     # Build Docker image
-    - name: Docker build
-      run: docker build -f apps/apilooback/Dockerfile -t apilooback:version1 .
+    # - name: Docker build
+    #   run: docker build -f apps/apilooback/Dockerfile -t apilooback:version1 .
 
     # Push the Docker image to Heroku Container Registry
     - name: Publish
       run: |
-        heroku container:push apilooback:version1 -a $APP_NAME
-        heroku container:release apilooback:version1 -a $APP_NAME
+        heroku container:push monsieursam/apiloo:version1 -a $APP_NAME
+        heroku container:release monsieursam/apiloo:version1 -a $APP_NAME
