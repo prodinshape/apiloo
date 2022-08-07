@@ -77,4 +77,4 @@ jobs:
           # Your Heroku App Name
           app_name: apilooback
           # docker-compose File Path
-          docker_compose_file: ./apps/apilooback/Dockerfile
+          docker_compose_file: apps/apilooback/Dockerfile
