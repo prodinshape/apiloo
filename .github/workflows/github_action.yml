@@ -24,10 +24,10 @@ jobs:
 
     # Build Docker image
     - name: Docker build
-      run: docker login --username=prodinshape@gmail.com --password=$HEROKU_API_KEY registry.heroku.com
+      run: docker build -f apps/apilooback/Dockerfile -t apilooback:version1 .
 
     # Push the Docker image to Heroku Container Registry
     - name: Publish
       run: |
-        heroku container:push web -a $APP_NAME
-        heroku container:release web -a $APP_NAME
+        heroku container:push apilooback:version1 -a $APP_NAME
+        heroku container:release apilooback:version1 -a $APP_NAME
