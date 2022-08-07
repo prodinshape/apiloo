@@ -34,6 +34,6 @@ jobs:
           # Your Heroku App Name
           app_name: apilooback
           # Dokerfile path
-          dockerfile_path: ./apps/apilooback/Dockerfile
+          dockerfile_path: apps/apilooback/Dockerfile
           # Heroku Process Type
           process_type: web
