@@ -13,7 +13,16 @@
         "assets": ["apps/apilooback/src/assets"]
       },
       "configurations": {
+        "development":
+        {
+          "envFiles": [
+            ".env"
+          ]
+        },
         "production": {
+          "envFiles": [
+            ".env"
+          ],
           "optimization": true,
           "extractLicenses": true,
           "inspect": false,
