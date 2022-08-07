@@ -1,33 +1,59 @@
-name: dotnet-docker-heroku CD
+# Your workflow name.
+name: Deploy to heroku.
 
+# Run workflow on every push to master branch.
 on:
   push:
-    branches: [ main ]
-  pull_request:
-    branches: [ main ]
+    branches: [master]
 
-#set environment variables
-env:
-  HEROKU_API_KEY: 227b528f-a925-4ad3-b3eb-592b5761ff91
-  APP_NAME: apilooback
-
+# Your workflows jobs.
 jobs:
-
-  deploy:
-    name: Deploy to Heroku
-    runs-on: ubuntu-18.04
+  build:
+    runs-on: ubuntu-latest
     steps:
+      # Check-out your repository.
+      - name: Checkout
+        uses: actions/checkout@v2
 
-    # Clone the repository
-    - name: Checkout
-      uses: actions/checkout@v2
 
-    # Build Docker image
-    # - name: Docker build
-    #   run: docker build -f apps/apilooback/Dockerfile -t apilooback:version1 .
+### ⬇ IMPORTANT PART ⬇ ###
 
-    # Push the Docker image to Heroku Container Registry
-    - name: Publish
-      run: |
-        heroku container:push monsieursam/apiloo:version1 -a $APP_NAME
-        heroku container:release monsieursam/apiloo:version1 -a $APP_NAME
+      - name: Build, Push and Release a Docker container to Heroku. # Your custom step name
+        uses: gonuit/heroku-docker-deploy@v1.3.3 # GitHub action name (leave it as it is).
+        with:
+          # Below you must provide variables for your Heroku app.
+
+          # The email address associated with your Heroku account.
+          # If you don't want to use repository secrets (which is recommended) you can do:
+          # email: my.email@example.com
+          email: prodinshape@gmail.com
+
+          # Heroku API key associated with provided user's email.
+          # Api Key is available under your Heroku account settings.
+          heroku_api_key: 227b528f-a925-4ad3-b3eb-592b5761ff91
+
+          # Name of the heroku application to which the build is to be sent.
+          heroku_app_name: apilooback
+
+          # (Optional, default: "./")
+          # Dockerfile directory.
+          # For example, if you have a Dockerfile in the root of your project, leave it as follows:
+          dockerfile_directory: ./apps/apilooback/
+
+          # (Optional, default: "Dockerfile")
+          # Dockerfile name.
+          dockerfile_name: Dockerfile
+
+          # (Optional, default: "")
+          # Additional options of docker build command.
+          docker_options: "--no-cache"
+
+          # (Optional, default: "web")
+          # Select the process type for which you want the docker container to be uploaded.
+          # By default, this argument is set to "web".
+          # For more information look at https://devcenter.heroku.com/articles/process-model
+          process_type: web
+
+
+
+### ⬆ IMPORTANT PART ⬆ ###
