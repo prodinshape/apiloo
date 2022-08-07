@@ -1,6 +1,6 @@
 version: '3.8'
 services:
-  apilooback:
+  containerA:
     image: monsieursam/apiloo:version1
     ports:
       - 3000:3000 # set according to your project setup
