@@ -30,6 +30,7 @@
     "adminjs": "^5.7.3",
     "bcryptjs": "^2.4.3",
     "class-validator": "^0.13.2",
+    "env-cmd": "^10.1.0",
     "express": "^4.17.3",
     "express-formidable": "^1.2.0",
     "express-session": "^1.17.2",
