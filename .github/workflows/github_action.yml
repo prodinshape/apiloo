@@ -34,7 +34,7 @@ jobs:
           # Heroku API key associated with provided user's email.
           heroku_api_key: 227b528f-a925-4ad3-b3eb-592b5761ff91
           # Dockerfile directory.
-          dockerfile_directory: ./apps/apilooback/
+          dockerfile_directory: apps/apilooback/
           # Dockerfile name. [default=Dockerfile]
           dockerfile_name: Dockerfile
           # Select process type for wich you want docker container to be uploaded. [default=web]
