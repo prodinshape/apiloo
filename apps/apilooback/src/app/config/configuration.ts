@@ -1,10 +1,10 @@
 export default (entities) => ({
-  type: 'mysql',
-  host: 'sql11.freemysqlhosting.net',
-  port: '3306',
-  username: 'sql11510456',
-  password: '9LVfpKY3tH',
-  database: 'sql11510456',
-  entities,
+  type: process.env.DB_TYPE,
+  host: process.env.DB_HOST,
+  port: process.env.DB_PORT,
+  username: process.env.DB_USERNAME,
+  password: process.env.DB_PASSWORD,
+  database: process.env.DB_NAME,
   synchronize: true,
+  entities,
 });

@@ -1,6 +1,7 @@
 FROM node:16 AS development
 WORKDIR /usr/src/app
 COPY package*.json ./
+COPY apps/apilooback/.env ./
 RUN npm install
 COPY . .
 RUN npm run build

@@ -23,18 +23,14 @@ const adminJs: any = {
 
 AdminJS.registerAdapter(adminJs);
 
-console.log(process.env);
-
 @Module({
   imports: [
-    ConfigModule.forRoot({
-      isGlobal: true
-    }),
-    UserModule,
-    AuthModule,
     TypeOrmModule.forRoot(
       configuration(entities)
     ),
+    ConfigModule.forRoot({isGlobal: true}),
+    UserModule,
+    AuthModule,
     AdminModule.createAdmin({
       adminJsOptions: {
         rootPath: '/admin',
