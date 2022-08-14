@@ -1,19 +1,41 @@
-name: '' #set whatevername you want to your github job
+# This is a basic workflow to help you get started with Actions
+
+name: CI
+
+# Controls when the workflow will run
 on:
+  # Triggers the workflow on push or pull request events but only for the "main" branch
   push:
-    branches: [main]
-    # set the events you would like to trigger this job
+    branches: [ "main" ]
+  pull_request:
+    branches: [ "main" ]
+
+  # Allows you to run this workflow manually from the Actions tab
+  workflow_dispatch:
+
+# A workflow run is made up of one or more jobs that can run sequentially or in parallel
 jobs:
+  # This workflow contains a single job called "build"
   build:
+    # The type of runner that the job will run on
     runs-on: ubuntu-latest
+
+    # Steps represent a sequence of tasks that will be executed as part of the job
     steps:
-      - name: Checkout
-        uses: actions/checkout@v2
-      - name: Build, Push and Deploy to Heroku #set the whatever name you want to this step
-        id: heroku
-        uses: snithyanantham/docker-compose-multiple-apps-heroku-deploy@v1.0  # use the latest version of the action
+      - name: Build, Push and Release a Docker container to Heroku.
+      # You may pin to the exact commit or the version.
+      # uses: gonuit/heroku-docker-deploy@9ab97585f979857642d66612a2ae4062b3347d53
+        uses: gonuit/heroku-docker-deploy@v1.3.3
         with:
-          email: prodinshape@gmail.com # your heroku email
-          api_key: 227b528f-a925-4ad3-b3eb-592b5761ff91 # your  heroku api key
-          docker_compose_file: './docker-compose.yml' # set the path to the folder where the docker-compose file is located
-          heroku_apps: '[{"imagename":"monsieursam/apiloo","appname":"apilooback","apptype":"web"}]' # List of Docker Image name, Heroku app and Heroku app type
+          # Name of the heroku application to which the build is to be sent.
+          heroku_app_name: apilooback
+          # The email address associated with your Heroku account.
+          email: prodinshape@gmail.com
+          # Heroku API key associated with provided user's email.
+          heroku_api_key: 227b528f-a925-4ad3-b3eb-592b5761ff91
+          # Dockerfile directory.
+          dockerfile_directory: ./apps/apilooback/
+          # Dockerfile name. [default=Dockerfile]
+          dockerfile_name: Dockerfile
+          # Select process type for wich you want docker container to be uploaded. [default=web]
+          process_type: web
