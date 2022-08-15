@@ -1,4 +1,4 @@
-export default (entities) => ({
+export default (entities): any => ({
   type: process.env.DB_TYPE || 'mysql',
   host: process.env.DB_HOST || '34.78.18.91',
   port: process.env.DB_PORT || 3306,
