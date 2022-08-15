@@ -1,7 +1,7 @@
 FROM node:18
 WORKDIR /usr/src/app
 COPY package*.json ./
-RUN npm install
+RUN yarn
 COPY . .
-RUN npm run nx build apilooback
+RUN yarn nx build apilooback
 CMD [ "node", "dist/apps/apilooback/main.js" ]
