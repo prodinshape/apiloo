@@ -9,7 +9,6 @@ export class UserService {
     const user = User.create(createUserDto);
     await user.save();
 
-    delete user.password;
     return user;
   }
 
